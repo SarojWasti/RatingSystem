@@ -625,6 +625,7 @@ namespace RatingSystemHotel
             // btnBrowse
             // 
             this.btnBrowse.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBrowse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBrowse.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnBrowse.Location = new System.Drawing.Point(621, 787);
@@ -633,6 +634,7 @@ namespace RatingSystemHotel
             this.btnBrowse.TabIndex = 13;
             this.btnBrowse.Text = "Browse";
             this.btnBrowse.UseVisualStyleBackColor = false;
+            this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // Customer
             // 

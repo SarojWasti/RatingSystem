@@ -24,19 +24,8 @@ namespace RatingSystemHotel
             InitializeComponent();
             DisplayTime();
         }
-        private void FormDetails()
+        private void ConvertData(string[] rateText)
         {
-            nameField = textBox1.Text;
-            addressField = textBox2.Text;
-            contactField = textBox3.Text;
-            qualityFood = groupFoodQuality.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
-            friendlyStaff = groupFriendlyStaff.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
-            restClean = groupClean.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
-            orderAccuracy = groupAccuracy.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
-            restAmbience = groupAmbience.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
-            valueMoney = groupValueMoney.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
-            string[] cusDetails = { nameField,addressField,contactField,qualityFood,friendlyStaff,restClean,orderAccuracy,restAmbience,valueMoney,dateAndTime.ToString()};
-            rateText = cusDetails;
             for (int i = 3; i < rateText.Length; i++)
             {
                 if (Equals(rateText[i], "Excellent"))
@@ -56,6 +45,21 @@ namespace RatingSystemHotel
                     rateText[i] = "1";
                 }
             }
+        }
+        private void FormDetails()
+        {
+            nameField = textBox1.Text;
+            addressField = textBox2.Text;
+            contactField = textBox3.Text;
+            qualityFood = groupFoodQuality.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
+            friendlyStaff = groupFriendlyStaff.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
+            restClean = groupClean.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
+            orderAccuracy = groupAccuracy.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
+            restAmbience = groupAmbience.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
+            valueMoney = groupValueMoney.Controls.OfType<RadioButton>().FirstOrDefault(n => n.Checked).Text;
+            string[] cusDetails = { nameField,addressField,contactField,qualityFood,friendlyStaff,restClean,orderAccuracy,restAmbience,valueMoney,dateAndTime.ToString()};
+            rateText = cusDetails;
+            ConvertData(rateText);
         }
         private void CustomerDetails(string[] cusDetails)
         {
@@ -96,6 +100,11 @@ namespace RatingSystemHotel
         {
             FormDetails();
             CustomerDetails(rateText);
+        }
+
+        private void btnBrowse_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("Customer.csv");
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
