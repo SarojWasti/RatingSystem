@@ -90,17 +90,17 @@ namespace RatingSystemHotel
                 for (var i = 1; i < feedBackData.Count; i++)
                 {
                     serialize.Add(new Serialization(feedBackData[i][0], feedBackData[i][1], feedBackData[i][2], feedBackData[i][3], feedBackData[i][4], feedBackData[i][5], feedBackData[i][6], feedBackData[i][7], feedBackData[i][8], feedBackData[i][9]));
-
-                    feedbackGrid.Rows.Add(feedBackData[i]);
                     using (System.IO.StreamWriter writeFile = new System.IO.StreamWriter("Records.csv", true))
                     {
                         writeFile.Write(feedBackData[i][0] + "," + feedBackData[i][1] + "," + feedBackData[i][2] + "," + feedBackData[i][3] + "," + feedBackData[i][4] + "," + feedBackData[i][5] + "," + feedBackData[i][6] + "," + feedBackData[i][7] + "," + feedBackData[i][8] + "," + feedBackData[i][9]);
                         writeFile.Write("\n");
                         writeFile.Close();
                     }
-                    
+
                 }
             }
+            feedbackGrid.Rows.Clear();
+            AddToGrid();
         }
 
         private void btnSort_Click(object sender, EventArgs e)
