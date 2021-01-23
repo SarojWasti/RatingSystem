@@ -22,7 +22,9 @@ namespace RatingSystemHotel
         }
         private void ImportData()
         {
+            //list is created to store data by readling line by line then converting each row to list
             List<string[]> feedBackData = System.IO.File.ReadAllLines("Records.csv").Select(x => x.Split(',')).ToList();
+            //data grid view column is set to the lenght of the first index to create column
             feedbackGrid.ColumnCount = feedBackData[0].Length;
             {
                 for (var column = 0; column < feedBackData[0].Length; column++)
@@ -30,6 +32,7 @@ namespace RatingSystemHotel
                     feedbackGrid.Columns[column].Name = feedBackData[0][column];
                 }
             }
+            //serializing the list data from index 1 to all existing rows
             for (int i = 1; i < feedBackData.Count; i++)
             {
                 serialize.Add(new Serialization(feedBackData[i][0], feedBackData[i][1], feedBackData[i][2], feedBackData[i][3], feedBackData[i][4], feedBackData[i][5], feedBackData[i][6], feedBackData[i][7], feedBackData[i][8], feedBackData[i][9]));
@@ -39,8 +42,10 @@ namespace RatingSystemHotel
 
         private void AddToGrid()
         {
+            //iterating the object of the serialization class
             foreach (Serialization list in serialize)
             {
+                //creating and adding data to array to populate data grid view
                 string[] dataList = new string[10];
                 dataList[0] = list.NameField;
                 dataList[1] = list.AddressField;
